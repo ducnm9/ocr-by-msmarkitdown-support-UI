@@ -22,6 +22,7 @@ AZURE_OPENAI_API_KEY: str | None = os.getenv("AZURE_OPENAI_API_KEY")
 GOOGLE_API_KEY: str | None = os.getenv("GOOGLE_API_KEY")
 TOGETHER_API_KEY: str | None = os.getenv("TOGETHER_API_KEY")
 GROQ_API_KEY: str | None = os.getenv("GROQ_API_KEY")
+DEEPSEEK_API_KEY: str | None = os.getenv("DEEPSEEK_API_KEY")
 
 # Allowed file extensions for upload (Requirement 1.1)
 ALLOWED_EXTENSIONS: set[str] = {

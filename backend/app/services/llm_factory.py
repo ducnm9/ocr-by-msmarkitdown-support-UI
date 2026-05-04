@@ -91,6 +91,14 @@ class LLMClientFactory:
             model = config.model
             return client, model
 
+        if provider == LLMProvider.DEEPSEEK:
+            client = OpenAI(
+                api_key=config.api_key,
+                base_url="https://api.deepseek.com",
+            )
+            model = config.model or "deepseek-chat"
+            return client, model
+
         if provider == LLMProvider.CUSTOM:
             client = OpenAI(
                 api_key=config.api_key or "custom",

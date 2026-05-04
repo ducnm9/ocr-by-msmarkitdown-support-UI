@@ -15,6 +15,7 @@ export enum LLMProvider {
   LM_STUDIO = 'lm_studio',
   TOGETHER_AI = 'together_ai',
   GROQ = 'groq',
+  DEEPSEEK = 'deepseek',
   CUSTOM = 'custom',
 }
 

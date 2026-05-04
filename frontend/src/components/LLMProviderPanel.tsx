@@ -65,6 +65,7 @@ const PROVIDER_LABELS: Record<LLMProvider, string> = {
   [LLMProvider.LM_STUDIO]: 'LM Studio',
   [LLMProvider.TOGETHER_AI]: 'Together AI',
   [LLMProvider.GROQ]: 'Groq',
+  [LLMProvider.DEEPSEEK]: 'DeepSeek',
   [LLMProvider.CUSTOM]: 'Custom',
 }
 
@@ -73,6 +74,7 @@ const PROVIDER_DEFAULTS: Partial<Record<LLMProvider, Partial<LLMConfig>>> = {
   [LLMProvider.GOOGLE_GEMINI]: { model: 'gemini-2.0-flash' },
   [LLMProvider.OLLAMA]: { base_url: 'http://localhost:11434/v1', model: '' },
   [LLMProvider.LM_STUDIO]: { base_url: 'http://localhost:1234/v1', model: '' },
+  [LLMProvider.DEEPSEEK]: { model: 'deepseek-chat' },
 }
 
 type FieldSet = {
@@ -93,6 +95,7 @@ const PROVIDER_FIELDS: Record<LLMProvider, FieldSet> = {
   [LLMProvider.LM_STUDIO]: { base_url: true, model: true },
   [LLMProvider.TOGETHER_AI]: { api_key: true, model: true },
   [LLMProvider.GROQ]: { api_key: true, model: true },
+  [LLMProvider.DEEPSEEK]: { api_key: true, model: true },
   [LLMProvider.CUSTOM]: { base_url: true, api_key: true, model: true },
 }
 
@@ -259,7 +262,7 @@ export function LLMProviderPanel({ config, onChange }: LLMProviderPanelProps) {
             <div style={fieldGroupStyle}>
               <label htmlFor="llm-model" style={fieldLabelStyle}>Model</label>
               <input id="llm-model" type="text"
-                placeholder={config.provider === LLMProvider.OPENAI ? 'gpt-4o' : config.provider === LLMProvider.GOOGLE_GEMINI ? 'gemini-2.0-flash' : 'model-name'}
+                placeholder={config.provider === LLMProvider.OPENAI ? 'gpt-4o' : config.provider === LLMProvider.GOOGLE_GEMINI ? 'gemini-2.0-flash' : config.provider === LLMProvider.DEEPSEEK ? 'deepseek-chat' : 'model-name'}
                 value={config.model ?? ''} onChange={e => update({ model: e.target.value || undefined })} style={inputStyle} />
             </div>
           )}
